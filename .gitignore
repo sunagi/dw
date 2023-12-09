@@ -1,0 +1,23 @@
+# 依存関係のディレクトリ
+/node_modules
+
+# 環境設定ファイル
+.env
+
+# ログファイル
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# ビルドされたファイル
+/dist
+/build
+
+# OS生成のファイル
+.DS_Store
+Thumbs.db
+
+# エディタの設定ファイル
+.vscode
+.idea
+*.sublime*
