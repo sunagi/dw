@@ -1,6 +1,7 @@
 const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
+const indexRouter = require('./routes/index');
 const firebaseConfig = require('firebaseConfig');
 
 // Firebaseの初期化
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // 静的ファイルのためのディレクトリを指定
 app.use(express.static('public'));
-
+app.use('/', indexRouter);
 // アンケートページへのルーティング
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/survey.html');
