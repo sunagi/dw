@@ -2,7 +2,7 @@ const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
 const indexRouter = require('./routes/index');
-const firebaseConfig = require('firebaseConfig');
+const firebaseConfig = require('./firebaseConfig');
 
 // Firebaseの初期化
 admin.initializeApp({
