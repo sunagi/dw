@@ -1,11 +1,12 @@
 const express = require('express');
 const AWS = require('aws-sdk');
 const app = express();
+const indexRouter = require('./routes/index');
 require('dotenv').config();
 
 // AWS DynamoDBの設定
 AWS.config.update({
-  region: 'ap-northeast-1',
+  region: 'ap-northeast-1', // 適切なリージョンに設定
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
@@ -17,12 +18,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // 静的ファイルとルーティングの設定
 app.use(express.static('public'));
+app.use('/', indexRouter);
 
 // アンケート送信後の処理
 app.post('/submit-survey', (req, res) => {
     const data = req.body;
     const params = {
-        TableName: 'YourTableName', // DynamoDBのテーブル名
+        TableName: 'YUUUU', // DynamoDBのテーブル名
         Item: {
             'ID': Date.now().toString(), // ユニークなID
             'Gender': data.gender,
@@ -44,4 +46,4 @@ app.post('/submit-survey', (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+module.exports = app;
