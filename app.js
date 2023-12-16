@@ -22,6 +22,7 @@ app.use('/', indexRouter);
 
 // アンケート送信後の処理
 app.post('/submit-survey', (req, res) => {
+
     const data = req.body;
     const params = {
         TableName: 'YUUUU', // DynamoDBのテーブル名
@@ -46,4 +47,6 @@ app.post('/submit-survey', (req, res) => {
     });
 });
 
-module.exports = app;
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
+});
