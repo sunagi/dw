@@ -4,9 +4,13 @@ const app = express();
 const indexRouter = require('./routes/index');
 require('dotenv').config();
 
+// 環境変数の値を表示
+console.log('AWS Access Key ID:', process.env.AWS_ACCESS_KEY_ID);
+console.log('AWS Secret Access Key:', process.env.AWS_SECRET_ACCESS_KEY);
+
 // AWS DynamoDBの設定
 AWS.config.update({
-  region: 'ap-northeast-1', // 適切なリージョンに設定
+  region: 'ap-northeast-1',
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
