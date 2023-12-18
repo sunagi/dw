@@ -8,21 +8,6 @@
   ],
   "routes": [
     {
-      "src": "/css/(.*)",
-      "dest": "/public/css/$1",
-      "continue": true
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/public/images/$1",
-      "continue": true
-    },
-    {
-      "src": "/js/(.*)",
-      "dest": "/public/js/$1",
-      "continue": true
-    },
-    {
       "src": "/(.*)",
       "dest": "app.js"
     }
