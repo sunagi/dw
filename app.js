@@ -2,6 +2,7 @@ const express = require('express');
 const AWS = require('aws-sdk');
 const app = express();
 const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth'); // 新しいルートファイルをインポート
 require('dotenv').config();
 
 // AWS DynamoDBの設定
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // 静的ファイルとルーティングの設定
 app.use(express.static('public'));
 app.use('/', indexRouter);
+app.use('/auth', authRouter); // 新しいルートを追加
 
 // アンケート送信後の処理
 app.post('/submit-survey', (req, res) => {
@@ -46,5 +48,5 @@ app.post('/submit-survey', (req, res) => {
     });
 });
 
-module.exports = app;
+module.exports = { app, dynamoDb };
 
